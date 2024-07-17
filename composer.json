@@ -1,0 +1,32 @@
+{
+    "name": "ophimcms/theme-3ys",
+    "description": "Ophim's 3ys theme",
+    "type": "library",
+    "authors": [
+        {
+            "name": "ophimcms",
+            "email": "dev@ophim.cc"
+        }
+    ],
+    "require": {
+        "laravel/framework": "^6|^7|^8",
+        "ckfinder/ckfinder-laravel-package": "v3.5.2.1",
+        "hacoidev/ophim-core": "^1.0.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ophim\\Theme3Ys\\": "src/",
+            "Ophim\\Theme3Ys\\Database\\Factories\\": "database/factories/",
+            "Ophim\\Theme3Ys\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ophim\\Theme3Ys\\Theme3YsServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable"
+}

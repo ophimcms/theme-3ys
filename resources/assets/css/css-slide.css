@@ -1,0 +1,317 @@
+.wrap {
+	position: relative;
+	margin: auto;
+	width: 1400px;
+	height: 450px;
+	margin-top: 10px;
+	
+}
+.wrap .list {
+	width: 100%;
+	height: 100%;
+}
+.wrap .list .sitem {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 50px;
+	color: #fff;
+	width: 100%;
+	height: 100%;
+	transition: .2s;
+	overflow: hidden;
+	border-radius: 8px;
+}
+.wrap .list .sitem.show {
+	opacity: 1;
+	z-index: 99;
+}
+.sitem img {
+	max-width: 1400px;
+}
+/* 圆点 */
+.wrap .pointList {
+	position: absolute;
+	top: 0;
+	right: 1%;
+	text-align: right;
+	z-index: 999;
+	cursor: pointer;
+	padding-top: 27px;
+}
+.wrap .pointList .point {
+	padding: 0 10px;
+	height: 45px;
+	/* background: yellowgreen; */
+	overflow: hidden;
+}
+.wrap .pointList h3 {
+	font-size: 15px;
+	line-height: 40px;
+	color: #fff;
+}
+.wrap .pointList .point p {
+	font-size: 0;
+}
+.wrap .pointList .point.show {
+	text-align: right;
+	height: 85px;
+	background-image: linear-gradient(90deg, hsla(0,0%,100%,0), hsla(0,0%,100%,.1) 77%, hsla(0,0%,100%,0));
+}
+.wrap .pointList .point.show h3{
+	font-weight: 600;
+	font-size: 30px;
+	color: #fff;
+	margin-top: 10px;
+	margin-bottom: 2px;
+}
+.wrap .pointList .point.show p {
+	font-size: 14px;
+	color: #fff;
+}
+.gray {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.qy20-h-carousel__maskbottom[data-v-19035d48] {
+	pointer-events: none;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 230px;	
+	background-image: linear-gradient(0deg, #14161a, transparent);
+	z-index:999;
+}
+.qy20-h-carousel__maskl[data-v-19035d48], .qy20-h-carousel__maskr[data-v-19035d48]{
+	pointer-events: none;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 540px;
+}
+.qy20-h-carousel__maskl[data-v-19035d48]{
+	left: 0px;
+    transform: rotate(-180deg);
+	z-index:999;
+}
+.qy20-h-carousel__maskr[data-v-19035d48]{
+	right: 0px;
+	z-index:999;
+}
+.qy20-h-carousel__masktop[data-v-19035d48]{
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 174px;
+    z-index: 999;
+}
+.qy20-h-carousel__masktop1[data-v-19035d48]{
+    height: 64px;
+}
+.qy20-h-carousel__masktop2[data-v-19035d48]{
+    height: 110px;
+}
+.qy20-h-carousel__inner[data-v-19035d48]{
+    max-width: 1920px;
+    height: 450px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.popupp {
+    box-shadow: 0 .25rem .5rem rgba(0,0,0,.05),0 1.5rem 2.2rem rgba(0,0,0,.1)!important;
+    padding: 0 30px;
+    background: #fff;
+    width: 370px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    margin: 0 auto;
+    border-radius: 18px;
+    z-index: 9999;
+}
+.popupp::after {
+    content: '';
+    height: 80px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 18px 18px 0 0;
+}
+.popup-title::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    background: #fde6dd;
+    border-radius: 5px;
+    left: 0;
+    bottom: 5px;
+    z-index: -1;
+}
+.popup-header{
+    padding-top: 25px;
+    line-height: 40px;
+    text-align: center;
+    margin-bottom: 12px;
+}
+.popup-title {
+    position: relative;
+    font-size: 18px;
+    font-weight: 900;
+    display: inline-block;
+}
+
+.popup-main {
+    padding-bottom: 20px;
+}
+.popup-main p {
+    color: #282828;
+    line-height: 1.6;
+}
+.popup-main p a {
+    color: #ff2a14;
+}
+.popup-main p img {
+    height: 50%;
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+}
+.popup-footer {
+    padding: 10px 0 30px;
+    text-align: center;
+}
+.popup-footer .url {
+    margin: -15px -20px 0;
+    color: #c2c6d0;
+}
+.popup-footer .url em {
+    margin: 0 5px;
+    color: rgba(7,7,10,.92);
+    font-weight: 700;
+    font-style: normal;
+}
+.popup-btn-o:nth-child(2){
+    margin-top:10px;
+}
+.popup-btn-o {
+    color: #fff;
+    font-weight: 700;
+    width: 100%;
+    cursor: pointer;
+    line-height: 40px;
+    display: inline-block;
+    position: relative;
+    z-index: 9;
+}
+.popup-btn-o:hover{
+    color: #fff;
+}
+.popup-btn-o:hover::after {
+    box-shadow:0 10px 12px -4px rgba(229,9,20,0.25);
+}
+.popup-btn-o::after {
+    border-radius: 50px;
+    border: 1px solid #ff2a14;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    pointer-events: none;
+    background: linear-gradient(to right, #ff711f 0%, #e50914 100%);
+    z-index: -1;
+}
+.popupp .article-bg {
+    background-position: 200% 0;
+    background-size: 70%;
+}
+.popupp .article-bg01 {
+    background-position: right -40px;
+    bottom: 0;
+    transform: rotate(180deg);
+}
+
+.article-bg {
+    background-position: right;
+    border-radius: 0 18px 0 0;
+    top: 0;
+}
+.article-bg, .article-bg01 {
+    background: url(../images/images-article.png) no-repeat;
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    width: 100%;
+    height: 130px;
+    background-size: contain;
+}
+.shortcuts-mobile-overlay {
+    background-color: rgba(0,0,0,.5);
+    pointer-events: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: "";
+    z-index: 999;
+}
+.close-popup {
+    position: absolute;
+    right: calc(50% - 20px);
+    border: 1px solid #fff;
+    border-radius: 50px;
+    bottom: -45px;
+    width: 40px;
+    line-height: 40px;
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+.close-popup:hover{
+    background:#fff;
+}
+.close-popup i {
+    font-size: 18px;
+    color: #fff;
+}
+.close-popup:hover i{
+    color:#ff2a14;
+}
+@media(max-width:559px) {
+.popupp {
+	width: 77%;
+	padding: 0 25px;
+	font-size: 14px;
+	z-index: 9999;
+}
+.pc{
+    display:none!important;
+}
+.popup-header {
+	margin: -5px 0
+}
+.shortcuts-mobile-overlay {
+	background-color: rgba(0,0,0,.6);
+	z-index: 999;
+}
+.popup-footer .url em {
+	margin: 0 3px;
+	font-size: 12px
+}
+}
