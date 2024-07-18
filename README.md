@@ -1,4 +1,4 @@
-# THEME - Dy 2024 - OPHIM CMS
+# THEME - 3YS 2024 - OPHIM CMS
 
 ## Install
 
@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-    "ophimcms/theme-dy": "*"
+    "ophimcms/theme-3ys": "*"
     }
 1. Tại thư mục của Project: `composer update`
 2. Kích hoạt giao diện trong Admin Panel
@@ -21,21 +21,21 @@ https://github.com/hacoidev/ophim-core
     + `Reset` reset lại toàn bộ cấu hình của themes
 ## Demo
 ### Trang Chủ
-![Alt text](https://i.ibb.co/YbNYS6j/home.png "Home Page")
+![Alt text](https://i.ibb.co/1fncyTJ/image.png "Home Page")
 
 ### Trang Danh Sách Phim
 
-![Alt text](https://i.ibb.co/zHvKYNS/category.png "Catalog Page")
+![Alt text](https://i.ibb.co/7QPxXks/image.png "Catalog Page")
 
 ### Trang Thông Tin Phim
 
-![Alt text](https://i.ibb.co/crwNVLy/image.png "Info Page")
+![Alt text](https://i.ibb.co/ZXxqXQJ/image.png "Info Page")
 
 ### Trang Xem Phim
 
-![Alt text](https://i.ibb.co/HKHBbfd/image.png "Episode Page")
+![Alt text](https://i.ibb.co/5TjLQ4k/image.png "Episode Page")
 
 ### Custom View Blade
-- File blade gốc trong Package: `/vendor/ophimcms/theme-dy/resources/views/Theme3ys`
-- Copy file cần custom đến: `/resources/views/vendor/themes/Theme3ys`
-# THEME - Dy 2024 - OPHIM CMS
+- File blade gốc trong Package: `/vendor/ophimcms/theme-3ys/resources/views/theme3ys`
+- Copy file cần custom đến: `/resources/views/vendor/themes/theme3ys`
+# THEME - 3ys 2024 - OPHIM CMS

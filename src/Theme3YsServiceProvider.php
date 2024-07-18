@@ -34,7 +34,7 @@ class Theme3YsServiceProvider extends ServiceProvider
                         'name' => 'per_page_limit',
                         'label' => 'Pages limit',
                         'type' => 'number',
-                        'value' => 24,
+                        'value' => 21,
                         'wrapperAttributes' => [
                             'class' => 'form-group col-md-4',
                         ],
@@ -44,7 +44,7 @@ class Theme3YsServiceProvider extends ServiceProvider
                         'name' => 'movie_related_limit',
                         'label' => 'Movies related limit',
                         'type' => 'number',
-                        'value' => 14,
+                        'value' => 12,
                         'wrapperAttributes' => [
                             'class' => 'form-group col-md-4',
                         ],
