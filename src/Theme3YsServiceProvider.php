@@ -75,6 +75,21 @@ class Theme3YsServiceProvider extends ServiceProvider
                         'tab' => 'List'
                     ],
                     [
+                        'name' => 'hotest',
+                        'label' => 'Sidebar Single',
+                        'type' => 'code',
+                        'hint' => 'Label|relation|find_by_field|value|sort_by_field|sort_algo|limit|show_template (top_text|top_thumb)',
+                        'value' => <<<EOT
+                        Sắp chiếu||status|trailer|publish_year|desc|10|top_text
+                        Top phim lẻ||type|single|view_week|desc|10|top_thumb
+                        Top phim bộ||type|series|view_week|desc|10|top_thumb
+                        EOT,
+                        'attributes' => [
+                            'rows' => 5
+                        ],
+                        'tab' => 'List'
+                    ],
+                    [
                         'name' => 'additional_css',
                         'label' => 'Additional CSS',
                         'type' => 'code',
