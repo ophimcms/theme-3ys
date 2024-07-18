@@ -24,7 +24,7 @@
             <div class="col-lg-wide-25 col-md-wide-25 hidden-sm hidden-xs">
                 <div class="myui-panel_hd">
                     <div class="myui-panel__head clearfix">
-                        <h3 class="title">Top view</h3>
+                        <h3 class="title">Xem nhiều</h3>
                     </div>
                 </div>
                 <ul class="myui-vodlist__text active clearfix" style="padding: 0 10px;">

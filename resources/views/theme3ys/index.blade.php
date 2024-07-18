@@ -61,7 +61,7 @@
                                 $query->where($field, $val);
                             })
                             ->orderBy('view_total', 'desc')
-                            ->limit(10)
+                            ->limit(20)
                             ->get(),
                         'link' => $link ?: '#',
                     ];
