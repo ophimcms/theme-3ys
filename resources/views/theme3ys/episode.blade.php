@@ -185,8 +185,8 @@
 
 @push('scripts')
 
-    <script src="{{ asset('/themes/dy/plugins/jquery-raty/jquery.raty.js') }}"></script>
-    <link href="{{ asset('/themes/dy/plugins/jquery-raty/jquery.raty.css') }}" rel="stylesheet" type="text/css"/>
+    <script src="{{ asset('/themes/3ys/plugins/jquery-raty/jquery.raty.js') }}"></script>
+    <link href="{{ asset('/themes/3ys/plugins/jquery-raty/jquery.raty.css') }}" rel="stylesheet" type="text/css"/>
     <script>
         var rated = false;
         $('#movies-rating-star').raty({
@@ -196,9 +196,9 @@
             hints: ['quá tệ', 'tệ', 'không hay', 'không hay lắm', 'bình thường', 'xem được', 'có vẻ hay', 'hay',
                 'rất hay', 'siêu phẩm'
             ],
-            starOff: '{{ asset('/themes/dy/plugins/jquery-raty/images/star-off.png') }}',
-            starOn: '{{ asset('/themes/dy/plugins/jquery-raty/images/star-on.png') }}',
-            starHalf: '{{ asset('/themes/dy/plugins/jquery-raty/images/star-half.png') }}',
+            starOff: '{{ asset('/themes/3ys/plugins/jquery-raty/images/star-off.png') }}',
+            starOn: '{{ asset('/themes/3ys/plugins/jquery-raty/images/star-on.png') }}',
+            starHalf: '{{ asset('/themes/3ys/plugins/jquery-raty/images/star-half.png') }}',
             click: function (score, evt) {
                 if (rated) return
                 fetch("{{ route('movie.rating', ['movie' => $currentMovie->slug]) }}", {
@@ -221,8 +221,8 @@
         });
     </script>
 
-    <script src="/themes/dy/player/js/p2p-media-loader-core.min.js"></script>
-    <script src="/themes/dy/player/js/p2p-media-loader-hlsjs.min.js"></script>
+    <script src="/themes/3ys/player/js/p2p-media-loader-core.min.js"></script>
+    <script src="/themes/3ys/player/js/p2p-media-loader-hlsjs.min.js"></script>
 
     <script src="/js/jwplayer-8.9.3.js"></script>
     <script src="/js/hls.min.js"></script>

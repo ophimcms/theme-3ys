@@ -173,8 +173,8 @@
 
 
     @push('scripts')
-        <script src="{{ asset('/themes/dy/plugins/jquery-raty/jquery.raty.js') }}"></script>
-        <link href="{{ asset('/themes/dy/plugins/jquery-raty/jquery.raty.css') }}" rel="stylesheet" type="text/css"/>
+        <script src="{{ asset('/themes/3ys/plugins/jquery-raty/jquery.raty.js') }}"></script>
+        <link href="{{ asset('/themes/3ys/plugins/jquery-raty/jquery.raty.css') }}" rel="stylesheet" type="text/css"/>
         <script>
             var rated = false;
             $('#movies-rating-star').raty({
@@ -184,9 +184,9 @@
                 hints: ['quá tệ', 'tệ', 'không hay', 'không hay lắm', 'bình thường', 'xem được', 'có vẻ hay', 'hay',
                     'rất hay', 'siêu phẩm'
                 ],
-                starOff: '{{ asset('/themes/dy/plugins/jquery-raty/images/star-off.png') }}',
-                starOn: '{{ asset('/themes/dy/plugins/jquery-raty/images/star-on.png') }}',
-                starHalf: '{{ asset('/themes/dy/plugins/jquery-raty/images/star-half.png') }}',
+                starOff: '{{ asset('/themes/3ys/plugins/jquery-raty/images/star-off.png') }}',
+                starOn: '{{ asset('/themes/3ys/plugins/jquery-raty/images/star-on.png') }}',
+                starHalf: '{{ asset('/themes/3ys/plugins/jquery-raty/images/star-half.png') }}',
                 click: function (score, evt) {
                     if (rated) return
                     fetch("{{ route('movie.rating', ['movie' => $currentMovie->slug]) }}", {
@@ -208,8 +208,8 @@
                 }
             });
         </script>
-        <script src="{{ asset('/themes/dy/source/jquery.fancybox.pack.js?v=2.1.5') }}"></script>
-        <link rel="stylesheet" type="text/css" href="{{ asset('/themes/dy/source/jquery.fancybox.css?v=2.1.5') }}"
+        <script src="{{ asset('/themes/3ys/source/jquery.fancybox.pack.js?v=2.1.5') }}"></script>
+        <link rel="stylesheet" type="text/css" href="{{ asset('/themes/3ys/source/jquery.fancybox.css?v=2.1.5') }}"
               media="screen"/>
         <script type="text/javascript">
             $(document).ready(function () {
