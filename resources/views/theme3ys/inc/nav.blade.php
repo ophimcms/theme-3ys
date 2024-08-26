@@ -38,7 +38,7 @@
                 </ul>
                 <div class="myui-header__search search-box">
                     <form id="" name="search" method="get" action="/">
-                        <input type="text" id="search" name="s" class="search_wd form-control"
+                        <input type="text" id="search" name="search" class="search_wd form-control"
                                value="{{ request('search') }}"
                                placeholder="Tìm kiếm"
                                autocomplete="off" style=" padding-left: 12px; ">
