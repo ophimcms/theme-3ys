@@ -109,7 +109,7 @@
                             </div>
                             </p>
                         </div>
-                        <div class="myui-content__operate">
+                        <div class="myui-content__operate" style="padding-left: 0;">
                             @if($watch_url)
                             <a class="btn btn-warm" href="{{ $watch_url }}"><i class="fa fa-play"></i>Xem Phim</a>
                             @endif

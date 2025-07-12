@@ -26,7 +26,12 @@
                @endphp
                 <li>
                     <a href="{{$movie->getUrl()}}" title="{{$movie->name}}">
-                        <span class="pull-right  text-muted"> {{$movie->publish_year}}</span>		<span class="badge {{$class_top}}">{{$key +1}}</span>{{$movie->name}}	</a>
+                        <span class="flex justify-between items-center">
+                            <span class="badge {{$class_top}}">{{$key +1}}</span>
+                            <span class="text-overflow">{{$movie->name}}</span>
+                            <span class="text-muted"> {{$movie->publish_year}}</span>
+                        </span>
+                    </a>
                 </li>
                 @endforeach
             </ul>

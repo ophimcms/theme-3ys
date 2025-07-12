@@ -4,7 +4,7 @@
 	width: 1400px;
 	height: 450px;
 	margin-top: 10px;
-	
+
 }
 .wrap .list {
 	width: 100%;
@@ -29,6 +29,8 @@
 }
 .sitem img {
 	max-width: 1400px;
+    width: 100%;
+    object-fit: cover;
 }
 /* 圆点 */
 .wrap .pointList {
@@ -84,7 +86,7 @@
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	height: 230px;	
+	height: 230px;
 	background-image: linear-gradient(0deg, #14161a, transparent);
 	z-index:999;
 }

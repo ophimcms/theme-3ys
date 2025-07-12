@@ -1,4 +1,4 @@
-body{ font-family:"Microsoft YaHei", "&#24494;&#36719;&#38597;&#40657;", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif; padding-top: 70px;}
+body{ font-family:"Roboto", sans-serif; padding-top: 70px;}
 .myui-header__top{ position: fixed;}
 body.active{padding-top: 60px;}	[class*=col-],.myui-content__list li,.myui-vodlist__media.col li{ padding: 10px}
 .btn{ border-radius: 5px;}
@@ -98,4 +98,16 @@ body.active{padding-top: 60px;}	[class*=col-],.myui-content__list li,.myui-vodli
 
 #streaming-sv {
     cursor: pointer !important;
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.items-center {
+    align-items: center;
 }

@@ -10,7 +10,7 @@
         <div class="myui-panel_bd clearfix">
             <ul class="myui-newslist__text clearfix">
                 @foreach ($top['data'] as $key => $movie)
-                <li class="col-md-1 col-sm-1 col-xs-1">
+                <li class="col-md-1 col-sm-1 col-xs-1 text-overflow">
                     <span>{{ $key + 1 }}. </span><a href="{{ $movie->getUrl() }}"
                                                 target="_blank" rel="nofollow">{{ $movie->name }}</a></li>
                 @endforeach
