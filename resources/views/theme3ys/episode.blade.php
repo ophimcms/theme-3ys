@@ -176,27 +176,27 @@
                         </div>
                     </div>
                 </div>
-                    <div class="myui-panel myui-panel-bg clearfix" >
-                        <div class="myui-panel-box clearfix">
-                            <div class="myui-panel_hd">
-                                <div class="myui-panel__head active bottom-line clearfix">
-                                    <h3 class="title">
-                                        Bình luận
-                                    </h3>
-                                </div>
+                <div class="myui-panel myui-panel-bg clearfix" >
+                    <div class="myui-panel-box clearfix">
+                        <div class="myui-panel_hd">
+                            <div class="myui-panel__head active bottom-line clearfix">
+                                <h3 class="title">
+                                    Bình luận
+                                </h3>
                             </div>
-                            <div class="myui-panel_bd">
-                                <div class="col-pd text-collapse content">
-                                    <div style="width: 100%; background-color: #fff">
-                                        <div class="fb-comments w-full" data-href="{{ $currentMovie->getUrl() }}"
-                                             data-width="100%"
-                                             data-numposts="5" data-colorscheme="light" data-lazy="true">
-                                        </div>
+                        </div>
+                        <div class="myui-panel_bd">
+                            <div class="col-pd text-collapse content">
+                                <div style="width: 100%; background-color: #fff">
+                                    <div class="fb-comments w-full" data-href="{{ $currentMovie->getUrl() }}"
+                                         data-width="100%"
+                                         data-numposts="5" data-colorscheme="light" data-lazy="true">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
                 <div class="myui-panel myui-panel-bg clearfix">
                     <div class="myui-panel-box clearfix">
                         <div class="myui-panel_hd">
