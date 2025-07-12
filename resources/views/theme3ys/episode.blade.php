@@ -1,36 +1,49 @@
 @extends('themes::theme3ys.layout')
 @php
     $tops = Cache::remember('site.movies.tops', setting('site_cache_ttl', 5 * 60), function () {
-       $lists = preg_split('/[\n\r]+/', get_theme_option('hotest'));
-       $data = [];
-       foreach ($lists as $list) {
-           if (trim($list)) {
-               $list = explode('|', $list);
-               [$label, $relation, $field, $val, $sortKey, $alg, $limit, $template] = array_merge($list, ['Phim hot', '', 'type', 'series', 'view_total', 'desc', 4, 'top_thumb']);
-               try {
-                   $data[] = [
-                       'label' => $label,
-                       'template' => $template,
-                       'data' => \Ophim\Core\Models\Movie::when($relation, function ($query) use ($relation, $field, $val) {
-                           $query->whereHas($relation, function ($rel) use ($field, $val) {
-                               $rel->where($field, $val);
-                           });
-                       })
-                           ->when(!$relation, function ($query) use ($field, $val) {
-                               $query->where($field, $val);
-                           })
-                           ->orderBy($sortKey, $alg)
-                           ->limit($limit)
-                           ->get(),
-                   ];
-               } catch (\Exception $e) {
-                   # code
-               }
-           }
-       }
+        $lists = preg_split('/[\n\r]+/', get_theme_option('hotest'));
+        $data = [];
+        foreach ($lists as $list) {
+            if (trim($list)) {
+                $list = explode('|', $list);
+                [$label, $relation, $field, $val, $sortKey, $alg, $limit, $template] = array_merge($list, [
+                    'Phim hot',
+                    '',
+                    'type',
+                    'series',
+                    'view_total',
+                    'desc',
+                    4,
+                    'top_thumb',
+                ]);
+                try {
+                    $data[] = [
+                        'label' => $label,
+                        'template' => $template,
+                        'data' => \Ophim\Core\Models\Movie::when($relation, function ($query) use (
+                            $relation,
+                            $field,
+                            $val,
+                        ) {
+                            $query->whereHas($relation, function ($rel) use ($field, $val) {
+                                $rel->where($field, $val);
+                            });
+                        })
+                            ->when(!$relation, function ($query) use ($field, $val) {
+                                $query->where($field, $val);
+                            })
+                            ->orderBy($sortKey, $alg)
+                            ->limit($limit)
+                            ->get(),
+                    ];
+                } catch (\Exception $e) {
+                    # code
+                }
+            }
+        }
 
-       return $data;
-   });
+        return $data;
+    });
 @endphp
 @section('content')
     <div class="visible-xs col-pd" style="padding: 0px;height: 100%;overflow: hidden;">
@@ -47,10 +60,23 @@
 
                             </div>
                         </div>
-                        <style type="text/css"> .embed-responsive{ padding-bottom: 56.25%;} </style>
+                        <style type="text/css">
+                            .embed-responsive {
+                                padding-bottom: 56.25%;
+                            }
+                        </style>
                         <a class="is-btn hidden-sm hidden-xs" id="player-sidebar-is" href="javascript:"><i class="fa fa-angle-right"></i></a>
                     </div>
                     <div class="col-lg-wide-25 col-md-wide-35 padding-0" id="player-sidebar">
+                        <div class="video-info-aux">
+                            @foreach ($currentMovie->episodes->where('slug', $episode->slug)->where('server', $episode->server) as $server)
+                                <a onclick="chooseStreamingServer(this)" data-type="{{ $server->type }}" id="streaming-sv"
+                                    data-id="{{ $server->id }}" data-link="{{ $server->link }}"
+                                    class="streaming-server tag-link" style="background: #232328;color: #FFF">
+                                    Nguồn #{{ $loop->index + 1 }}
+                                </a>
+                            @endforeach
+                        </div>
                         <div class="myui-panel active clearfix">
                             <div class="myui-panel-box clearfix">
                                 <div class="col-pd clearfix">
@@ -60,26 +86,31 @@
                                     <div class="text-muted">
                                         <ul class="nav nav-tabs pull-right">
                                             <li class="dropdown pb10 margin-0">
-                                                <a href="javascript:" class="padding-0 text-fff" data-toggle="dropdown">Chọn Server <i class="fa fa-angle-down"></i></a>
+                                                <a href="javascript:" class="padding-0 text-fff" data-toggle="dropdown">Chọn
+                                                    Server <i class="fa fa-angle-down"></i></a>
                                                 <div class="dropdown-box bottom">
                                                     <ul class="item">
                                                         @foreach ($currentMovie->episodes->sortBy([['server', 'asc']])->groupBy('server') as $server => $data)
-                                                            <li  @if ($episode->server == $server) class="active" @endif ><a href="#player{{$server}}" data-toggle="tab">{{ $server }}</a></li>
+                                                            <li @if ($episode->server == $server) class="active" @endif><a
+                                                                    href="#player{{ $server }}"
+                                                                    data-toggle="tab">{{ $server }}</a></li>
                                                         @endforeach
                                                     </ul>
                                                 </div>
                                             </li>
-                                            <a class="more sort-button pull-right" style="margin-left: 10px;" href="javascript:"><i class="fa fa-sort-amount-asc"></i> Sắp xếp</a>
+                                            <a class="more sort-button pull-right" style="margin-left: 10px;"
+                                                href="javascript:"><i class="fa fa-sort-amount-asc"></i> Sắp xếp</a>
                                         </ul>
                                     </div>
                                     <div class="tab-content">
                                         @foreach ($currentMovie->episodes->sortBy([['server', 'asc']])->groupBy('server') as $server => $data)
-                                            <div id="player{{$server}}" class="tab-pane fade in clearfix @if ($episode->server == $server) active @endif">
+                                            <div id="player{{ $server }}"
+                                                class="tab-pane fade in clearfix @if ($episode->server == $server) active @endif">
                                                 <ul class="myui-content__list sort-list clearfix" id="playlist">
                                                     @foreach ($data->sortBy('name', SORT_NATURAL)->groupBy('name') as $name => $item)
                                                         <li class="col-md-2 col-sm-5 col-xs-3">
                                                             <a class="btn btn-min @if ($item->contains($episode)) btn-warm @else btn-gray @endif "
-                                                               href="{{ $item->sortByDesc('type')->first()->getUrl() }}">
+                                                                href="{{ $item->sortByDesc('type')->first()->getUrl() }}">
                                                                 {{ $name }}
                                                             </a>
                                                         </li>
@@ -96,22 +127,12 @@
                 </div>
                 <div class="myui-player__data clearfix">
                     <h3>
-                        <a class="text-fff" href="{{ $currentMovie->getUrl() }}">{{$currentMovie->name}}</a>
+                        <a class="text-fff" href="{{ $currentMovie->getUrl() }}">{{ $currentMovie->name }}</a>
                         <small class="text-muted"> - Tập {{ $episode->name }}</small>
                     </h3>
                     <p class="text-muted margin-0">
-                        {{ $currentMovie->origin_name }} / {{ $currentMovie->publish_year }} /	 {{$currentMovie->language}}</p>
-                    <div class="video-info-aux" style="margin-top: 10px;text-align: center">
-
-                        @foreach ($currentMovie->episodes->where('slug', $episode->slug)->where('server', $episode->server) as $server)
-                            <a onclick="chooseStreamingServer(this)" data-type="{{ $server->type }}" id="streaming-sv"
-                               data-id="{{ $server->id }}"
-                               data-link="{{ $server->link }}" class="streaming-server tag-link"
-                               style="background: #232328;color: #FFF">
-                                Nguồn #{{ $loop->index + 1 }}
-                            </a>
-                        @endforeach
-                    </div>
+                        {{ $currentMovie->origin_name }} / {{ $currentMovie->publish_year }} /
+                        {{ $currentMovie->language }}</p>
                 </div>
             </div>
         </div>
@@ -124,10 +145,10 @@
                         <div class="myui-panel-box clearfix">
                             <div class="myui-panel_bd">
                                 @if ($currentMovie->showtimes)
-                                    <p><strong>Lịch chiếu : </strong> {{$currentMovie->showtimes}}</p>
+                                    <p><strong>Lịch chiếu : </strong> {{ $currentMovie->showtimes }}</p>
                                 @endif
-                                @if ($currentMovie->notify )
-                                    <p><strong>Thông báo : </strong> {{$currentMovie->notify}}</p>
+                                @if ($currentMovie->notify)
+                                    <p><strong>Thông báo : </strong> {{ $currentMovie->notify }}</p>
                                 @endif
                             </div>
                         </div>
@@ -145,11 +166,11 @@
                         <div class="myui-panel_bd">
                             <div class="col-pd text-collapse content">
                                 <p><span class="text-muted">Đạo diễn：</span>{!! $currentMovie->directors->map(function ($director) {
-                        return '<a href="' . $director->getUrl() . '" title="' . $director->name . '">' . $director->name . '</a>';
-                    })->implode(', ') !!} </p>
+                                        return '<a href="' . $director->getUrl() . '" title="' . $director->name . '">' . $director->name . '</a>';
+                                    })->implode(', ') !!} </p>
                                 <p><span class="text-muted">Diễn viên：</span>{!! $currentMovie->actors->map(function ($director) {
-                        return '<a href="' . $director->getUrl() . '" title="' . $director->name . '">' . $director->name . '</a>';
-                    })->implode(', ') !!} </p>
+                                        return '<a href="' . $director->getUrl() . '" title="' . $director->name . '">' . $director->name . '</a>';
+                                    })->implode(', ') !!} </p>
                                 {!! strip_tags($currentMovie->content) !!}
                             </div>
                         </div>
@@ -184,13 +205,12 @@
 @endsection
 
 @push('scripts')
-
     <script src="{{ asset('/themes/3ys/plugins/jquery-raty/jquery.raty.js') }}"></script>
-    <link href="{{ asset('/themes/3ys/plugins/jquery-raty/jquery.raty.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('/themes/3ys/plugins/jquery-raty/jquery.raty.css') }}" rel="stylesheet" type="text/css" />
     <script>
         var rated = false;
         $('#movies-rating-star').raty({
-            score: {{$currentMovie->getRatingStar()}},
+            score: {{ $currentMovie->getRatingStar() }},
             number: 10,
             numberMax: 10,
             hints: ['quá tệ', 'tệ', 'không hay', 'không hay lắm', 'bình thường', 'xem được', 'có vẻ hay', 'hay',
@@ -199,14 +219,14 @@
             starOff: '{{ asset('/themes/3ys/plugins/jquery-raty/images/star-off.png') }}',
             starOn: '{{ asset('/themes/3ys/plugins/jquery-raty/images/star-on.png') }}',
             starHalf: '{{ asset('/themes/3ys/plugins/jquery-raty/images/star-half.png') }}',
-            click: function (score, evt) {
+            click: function(score, evt) {
                 if (rated) return
                 fetch("{{ route('movie.rating', ['movie' => $currentMovie->slug]) }}", {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json",
                         'X-CSRF-TOKEN': document.querySelector(
-                            'meta[name="csrf-token"]')
+                                'meta[name="csrf-token"]')
                             .getAttribute(
                                 'content')
                     },
@@ -282,21 +302,21 @@
                         }
                     };
                     fake_player.setup(objSetupFake);
-                    fake_player.on('complete', function (event) {
+                    fake_player.on('complete', function(event) {
                         $("#fake_jwplayer").remove();
                         wrapper.innerHTML = `<iframe width="100%" height="100%" src="${link}" frameborder="0" scrolling="no"
                     allowfullscreen="" allow='autoplay'></iframe>`
                         fake_player.remove();
                     });
 
-                    fake_player.on('adSkipped', function (event) {
+                    fake_player.on('adSkipped', function(event) {
                         $("#fake_jwplayer").remove();
                         wrapper.innerHTML = `<iframe width="100%" height="100%" src="${link}" frameborder="0" scrolling="no"
                     allowfullscreen="" allow='autoplay'></iframe>`
                         fake_player.remove();
                     });
 
-                    fake_player.on('adComplete', function (event) {
+                    fake_player.on('adComplete', function(event) {
                         $("#fake_jwplayer").remove();
                         wrapper.innerHTML = `<iframe width="100%" height="100%" src="${link}" frameborder="0" scrolling="no"
                     allowfullscreen="" allow='autoplay'></iframe>`
@@ -397,8 +417,8 @@
 
 
                 const resumeData = 'OPCMS-PlayerPosition-' + id;
-                player.on('ready', function () {
-                    if (typeof (Storage) !== 'undefined') {
+                player.on('ready', function() {
+                    if (typeof(Storage) !== 'undefined') {
                         if (localStorage[resumeData] == '' || localStorage[resumeData] == 'undefined') {
                             console.log("No cookie for position found");
                             var currentPosition = 0;
@@ -410,7 +430,7 @@
                             }
                             console.log("Position cookie found: " + localStorage[resumeData]);
                         }
-                        player.once('play', function () {
+                        player.once('play', function() {
                             console.log('Checking position cookie!');
                             console.log(Math.abs(player.getDuration() - currentPosition));
                             if (currentPosition > 180 && Math.abs(player.getDuration() - currentPosition) >
@@ -418,7 +438,7 @@
                                 player.seek(currentPosition);
                             }
                         });
-                        window.onunload = function () {
+                        window.onunload = function() {
                             localStorage[resumeData] = player.getPosition();
                         }
                     } else {
@@ -426,8 +446,8 @@
                     }
                 });
 
-                player.on('complete', function () {
-                    if (typeof (Storage) !== 'undefined') {
+                player.on('complete', function() {
+                    if (typeof(Storage) !== 'undefined') {
                         localStorage.removeItem(resumeData);
                     } else {
                         console.log('Your browser is too old!');
@@ -443,7 +463,7 @@
         }
     </script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             const episode = '{{ $episode->id }}';
             let playing = document.querySelector(`[data-id="${episode}"]`);
             if (playing) {
